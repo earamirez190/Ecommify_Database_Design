@@ -1,5 +1,11 @@
 # 📘 Materia: Diseño y Optimización de Bases de Datos
 
+## Entrega
+
+Se hace entrega a través del siguiente link de github en donde se encontrara el repositorio
+
+Link: https://github.com/earamirez190/Ecommify_Database_Design/tree/main
+
 ## 👥 Integrantes
 
 | Nombre completo                          | Código Estudiante |
