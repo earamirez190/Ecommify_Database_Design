@@ -20,14 +20,6 @@ create table public.orders (
   constraint orders_pkey primary key (order_id)
 ) TABLESPACE pg_default;
 
-create table public.order_payments (
-  order_id uuid not null,
-  payment_sequential numeric not null,
-  payment_type text null,
-  payment_installments numeric null,
-  payment_value numeric null,
-  constraint order_payments_pkey primary key (order_id, payment_sequential)
-) TABLESPACE pg_default;
 
 create table public.order_items (
   order_id uuid not null,
@@ -40,21 +32,15 @@ create table public.order_items (
   constraint order_items_pkey primary key (order_id, order_item_id)
 ) TABLESPACE pg_default;
 
-CREATE TABLE IF NOT EXISTS order_items_p0
-PARTITION OF order_items
-FOR VALUES WITH (MODULUS 4, REMAINDER 0);
+create table public.order_payments (
+  order_id uuid not null,
+  payment_sequential numeric not null,
+  payment_type text null,
+  payment_installments numeric null,
+  payment_value numeric null,
+  constraint order_payments_pkey primary key (order_id, payment_sequential)
+) TABLESPACE pg_default;
 
-CREATE TABLE IF NOT EXISTS order_items_p1
-PARTITION OF order_items
-FOR VALUES WITH (MODULUS 4, REMAINDER 1);
-
-CREATE TABLE IF NOT EXISTS order_items_p2
-PARTITION OF order_items
-FOR VALUES WITH (MODULUS 4, REMAINDER 2);
-
-CREATE TABLE IF NOT EXISTS order_items_p3
-PARTITION OF order_items
-FOR VALUES WITH (MODULUS 4, REMAINDER 3);
 
 create table public.sellers (
   seller_id uuid not null,
